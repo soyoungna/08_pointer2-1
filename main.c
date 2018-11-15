@@ -5,54 +5,49 @@
 
 
 int main(int argc, char *argv[]) {
-	int i;
-	int j;
-	char c;
-	int (*calcfunc)(int,int);
-	int addfunc(int,int);
-	int subfunc(int,int);
-	int mulfunc(int,int);
-	int divfunc(int,int );
+	int image[5][5]={
+		{10,20,30,40,50},
+		{10,20,30,40,50},
+		{10,20,30,40,50},
+		{10,20,30,40,50},
+		{10,20,30,40,50}
+	};
 	
-	printf("input calculation : ");
-	scanf("%d %c %d",&i, &c, &j);
-	
-	
-	switch(c)
-	{
-		case '+':
-			calcfunc = addfunc;
-			break;
-		case '-':
-			calcfunc = subfunc;
-			break;
-		case '*':
-			calcfunc = mulfunc;
-			break;
-		case '/':
-			calcfunc = divfunc;
-			break;
-	}
-	
-	printf("result : %i\n", calcfunc(i,j));
+	print_image(image);
+	brighten_image(image);
+	print_image(image);
 	return 0;
 }
-int addfunc(int a,int b){
-	
-	return a+b;
-	
-}
 
-int subfunc(int a, int b){
+void print_image(int image[][5])
+{
+    int i,j;
+    int *ptr = &image[0][0];
+    
+    for(i=0;i<5;i++){
+    	for(j=0;j<5;j++){
+		
+    	
+    	printf("%d " , *ptr);
+    	ptr = ptr+1;
+        }
+         printf("\n");
+	}
 	
-	return a-b;
+	
 }
-int mulfunc(int a, int b){
-	return a*b;
+void brighten_image(int image[][5])
+{
+	int i, j;
+	int *ptr = &image[0][0];
+    
+    for(i=0;i<5;i++){
+    	for(j=0;j<5;j++){
+		
+    	*ptr = *ptr+10;
+    	ptr = ptr + 1;
+        }
+         printf("\n");
+	}
 	
-}
-
-int divfunc(int a ,int b){
-	
-	return a/b;
 }
